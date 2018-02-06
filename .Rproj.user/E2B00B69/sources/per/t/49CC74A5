@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1513649381610.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1178128153",
+    "id" : "49CC74A5",
+    "lastKnownWriteTime" : 1517097700,
+    "last_content_update" : 1517097700350,
+    "path" : "~/projects/R/cryptoTrading/global.R",
+    "project_path" : "global.R",
+    "properties" : {
+        "cursorPosition" : "12,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

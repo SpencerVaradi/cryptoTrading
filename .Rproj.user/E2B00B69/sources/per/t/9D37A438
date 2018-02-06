@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1516464831372.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4051135919",
+    "id" : "9D37A438",
+    "lastKnownWriteTime" : 1517082619,
+    "last_content_update" : 1517082619915,
+    "path" : "~/projects/R/cryptoTrading/scripts/poloniexPractice.R",
+    "project_path" : "scripts/poloniexPractice.R",
+    "properties" : {
+        "cursorPosition" : "143,52",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
