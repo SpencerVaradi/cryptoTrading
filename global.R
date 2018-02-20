@@ -1,5 +1,7 @@
 # https://steemkr.com/programming/@cryptovest/fetch-realtime-crypto-market-data-with-api-and-forecast-price-the-easy-way
 
+library(shiny)
+library(shinydashboard)
 library(jsonlite)
 library(ggplot2)
 library(forecast)
@@ -10,6 +12,8 @@ library(quantmod)
 library(data.table)
 library(rlist)
 library(pipeR)
+library(kableExtra)
+library(knitr)
 cc <- fromJSON("https://min-api.cryptocompare.com/")
 
 cc$AvailableCalls$Price$HistoDay$Info$Examples
@@ -34,3 +38,11 @@ startTime <- as.integer(now() - days(30))# cc_histoday_btc$Data$time[1]
 
 key    = "YC7C2WW1-6B437QS2-A6RP9UXO-3Y5G4XUS"
 secret = "faedae3e85145dbd895bb497328c1c16a9219768921f736258bcb3b800e2763e6fba58a0bf747ddd2888c27858037f7681d9072e8420b13f2a2b329c1eba834a"
+
+
+# ticker.info <- ReturnTicker(poloniex.public)
+# save(ticker.info,file = "tickerInfo.RDS")
+load("tickerInfo.RDS")
+ticker.info$pair <- rownames(ticker.info)
+ticker.info <- tbl_df(ticker.info) %>%
+  mutate(BaseCoin = gsub("_.*","",pair), Coin = gsub("*._","",pair))
