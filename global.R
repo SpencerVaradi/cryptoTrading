@@ -8,27 +8,44 @@ library(forecast)
 library(lubridate)
 library(PoloniexR)
 library(dplyr)
+library(tidyr)
 library(quantmod)
 library(data.table)
-library(rlist)
-library(pipeR)
-library(kableExtra)
-library(knitr)
-cc <- fromJSON("https://min-api.cryptocompare.com/")
+# library(rlist)
+# library(pipeR)
+# library(kableExtra)
+# library(knitr)
 
-cc$AvailableCalls$Price$HistoDay$Info$Examples
+source('widgets.R')
+source('chartsTab.R')
+source('tradesTab.R')
+source('tablesTab.R')
+source('server.R')
+
+poloniex.public <- PoloniexPublicAPI()
+
+currencies <- ReturnCurrencies(poloniex.public)
 
 
 
 
 
-cc_histoday_btc <- fromJSON("https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&allData=true&e=CCCAGG")
+header <- dashboardHeader(title = "Poloniex")
+
+sidebar <-
+  dashboardSidebar(sidebarMenu(
+    menuItem('Charts', tabName = 'charts_tab', icon = icon('calendar')),
+    menuItem('Trades', tabName = 'trades_tab', icon = icon('map')),
+    menuItem(('Sample Tables'), tabName = 'tables_tab', icon('table'))
+
+))
 
 
 
-# ticker.info <- ReturnTicker(poloniex.public)
-# save(ticker.info,file = "tickerInfo.RDS")
-load("tickerInfo.RDS")
-ticker.info$pair <- rownames(ticker.info)
-ticker.info <- tbl_df(ticker.info) %>%
-  mutate(BaseCoin = gsub("_.*","",pair), Coin = gsub("*._","",pair))
+body <- dashboardBody(tabItems(chartsTab,tradesTab, tablesTab))
+ui <-dashboardPage(header, sidebar, body)
+
+
+
+
+shinyApp(ui, server)
